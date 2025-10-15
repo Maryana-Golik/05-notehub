@@ -16,3 +16,8 @@ export interface FetchNotesResponse {
   totalItems: number;
   totalPages: number;
 }
+export interface NewNote {
+  title: string;
+  content?: string;
+  tag: NoteTag;
+}
