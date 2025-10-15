@@ -9,15 +9,9 @@ export interface Note {
   updatedAt: string;
 }
 
-export interface FetchNotesResponse {
-  items: Note[];
-  page: number;
-  perPage: number;
-  totalItems: number;
-  totalPages: number;
-}
 export interface NewNote {
   title: string;
   content?: string;
   tag: NoteTag;
 }
+

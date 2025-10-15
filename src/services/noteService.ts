@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { FetchNotesResponse, Note, NewNote } from '../types/note';
+import type { Note, NewNote } from '../types/note';  
 
 const api = axios.create({
   baseURL: 'https://notehub-public.goit.study/api',
@@ -13,6 +13,15 @@ api.interceptors.request.use((config) => {
   }
   return config;
 });
+
+
+export interface FetchNotesResponse {
+  items: Note[];
+  page: number;
+  perPage: number;
+  totalItems: number;
+  totalPages: number;
+}
 
 export interface FetchNotesParams {
   page?: number;
