@@ -1,9 +1,7 @@
 import axios from 'axios';
-import type { Note, NewNote } from '../types/note';  
+import type { Note, NewNote } from '../types/note';
 
-const api = axios.create({
-  baseURL: 'https://notehub-public.goit.study/api',
-});
+const api = axios.create({ baseURL: 'https://notehub-public.goit.study/api' });
 
 api.interceptors.request.use((config) => {
   const token = import.meta.env.VITE_NOTEHUB_TOKEN as string | undefined;
@@ -16,10 +14,7 @@ api.interceptors.request.use((config) => {
 
 
 export interface FetchNotesResponse {
-  items: Note[];
-  page: number;
-  perPage: number;
-  totalItems: number;
+  notes: Note[];
   totalPages: number;
 }
 
@@ -40,7 +35,7 @@ export async function fetchNotes({
     params: { page, perPage, search },
     signal,
   });
-  return res.data;
+  return res.data; 
 }
 
 export async function createNote(body: NewNote, signal?: AbortSignal): Promise<Note> {
@@ -52,5 +47,6 @@ export async function deleteNote(id: string, signal?: AbortSignal): Promise<Note
   const res = await api.delete<Note>(`/notes/${id}`, { signal });
   return res.data;
 }
+
 
 
